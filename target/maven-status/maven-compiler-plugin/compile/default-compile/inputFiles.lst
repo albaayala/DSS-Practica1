@@ -1,0 +1,7 @@
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/Practica1Application.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/controller/CartController.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/controller/ProductController.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/model/Product.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/repository/ProductRepo.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/service/CartService.java
+/home/usuario/Escritorio/DSS/practica1/src/main/java/com/alba/dss/practica1/service/ProductService.java

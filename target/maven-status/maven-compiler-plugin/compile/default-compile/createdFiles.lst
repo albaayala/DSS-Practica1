@@ -1,0 +1,7 @@
+com/alba/dss/practica1/model/Product.class
+com/alba/dss/practica1/Practica1Application.class
+com/alba/dss/practica1/service/ProductService.class
+com/alba/dss/practica1/controller/ProductController.class
+com/alba/dss/practica1/repository/ProductRepo.class
+com/alba/dss/practica1/service/CartService.class
+com/alba/dss/practica1/controller/CartController.class
