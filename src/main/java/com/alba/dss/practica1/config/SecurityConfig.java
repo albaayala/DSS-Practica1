@@ -23,20 +23,22 @@ public class SecurityConfig {
 				.requestMatchers("/", "/index", "/index.html", "/login",
 						"/error", "/css/**", "/js/**", "/images/**",
 						"/webjars/**").permitAll()
-				.requestMatchers("/h2-console", "/h2-console/**")
-				.permitAll()
 				
-				.requestMatchers(HttpMethod.GET, "/products")
-				.permitAll()
+				.requestMatchers("/h2-console", "/h2-console/**").permitAll()
 				
-				.requestMatchers("/admin", "/admin/**")
-				.hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/products").permitAll()
 				
-				.requestMatchers("/products/add", "/products/edit/**",
-						"/products/delete/**", "/products/save")
-				.hasRole("ADMIN")
+				.requestMatchers("/admin", "/admin/**").hasRole("ADMIN")
+				
+				.requestMatchers(
+						"/products/add", 
+						"/products/edit/**",
+						"/products/delete/**", 
+						"/products/save"
+						).hasRole("ADMIN")
 				
 				.requestMatchers("/cart", "/cart/**").permitAll()
+				
 				.anyRequest().authenticated()
 			)
 		.formLogin(form -> form
@@ -47,7 +49,8 @@ public class SecurityConfig {
 	
 		.logout(logout -> logout
 				.logoutUrl("/logout")
-				.logoutSuccessUrl("/").permitAll()
+				.logoutSuccessUrl("/")
+				.permitAll()
 			)
 	
 		.csrf(csrf -> csrf
@@ -56,7 +59,7 @@ public class SecurityConfig {
 		
 		.headers(headers -> headers
 				.frameOptions(frame -> frame.sameOrigin())
-			);
+		);
 		
 		return http.build();
 	}
