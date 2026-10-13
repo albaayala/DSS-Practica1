@@ -21,6 +21,12 @@ public class ProductController {
 		this.productService = productService;
 	}
 	
+	@RequestMapping(value = "/admin")
+	public String adminPage(Model model){
+		model.addAttribute("products", productService.getAllProducts());
+		return "admin";
+	}
+	
 	@RequestMapping(value = "/products")
 	public String getProducts(Model model){
 		model.addAttribute("products", productService.getAllProducts());
