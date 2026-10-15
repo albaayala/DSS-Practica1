@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 
 @Configuration
@@ -41,10 +42,17 @@ public class SecurityConfig {
 				
 				.anyRequest().authenticated()
 			)
+		
 		.formLogin(form -> form
 				.loginPage("/login")
 				.defaultSuccessUrl("/products", false)
 				.permitAll()
+			)
+		// Para que si es una operacion de admin y no se a autenticado, no de 403 si no el login
+		.exceptionHandling(exception -> exception
+			    .authenticationEntryPoint(
+			        new LoginUrlAuthenticationEntryPoint("/login")
+			    )
 			)
 	
 		.logout(logout -> logout
