@@ -38,6 +38,9 @@ public class SecurityConfig {
 						"/products/save"
 						).hasRole("ADMIN")
 				
+				.requestMatchers( "/products/order**").permitAll()
+				
+				
 				.requestMatchers("/cart", "/cart/**").permitAll()
 				
 				.anyRequest().authenticated()
