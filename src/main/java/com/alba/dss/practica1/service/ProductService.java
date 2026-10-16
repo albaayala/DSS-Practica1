@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.alba.dss.practica1.repository.ProductRepo;
 import com.alba.dss.practica1.model.Product;
 
+import java.util.Comparator;
 import java.util.List;
 
 // Implementar:
@@ -36,6 +37,30 @@ public class ProductService {
 	
 	public void deleteProduct(Product product) {
 		productRepo.delete(product);
+	}
+	
+	// Plus
+	public List<Product> getAllProductsOrder(boolean ascendente ) {
+		// Obtenemos al lista de productos
+		List <Product> res = productRepo.findAll();
+		
+		// la ordenamos de forma descendente
+		res.sort(Comparator.comparingDouble(Product::getPrice));
+		
+		// Si es ascendete le damos la vuelta
+		if(ascendente) {
+			res = res.reversed();
+		}
+		
+		return res;
+	}
+	
+	public List<Product> getPartProduct(double min, double max){
+		
+		// Filtramos la lista,para los que esten entre [min, max]
+		List<Product> res = productRepo.findAll().stream().filter(product->product.getPrice()>=min && product.getPrice()<=max).toList();
+		
+		return res;
 	}
 	
 }

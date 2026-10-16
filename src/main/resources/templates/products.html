@@ -28,6 +28,31 @@
         <a th:href="@{/cart}" class="btn btn-secondary">
             Ver Carrito
         </a>
+		
+		<!--<select id="selectOrden" class="btn btn-secondary" onchange="window.location.href=this.value">
+		    <option th:value="@{/products}" 
+		            th:selected="${orden == null || orden == 'normal'}">
+		        Predefinido
+		    </option>
+		    
+		    <option th:value="@{/products/order/(orden='asc')}" 
+		            th:selected="${orden == 'asc'}">
+		        Ascendente
+		    </option>
+		    
+		    <option th:value="@{/products/order/(orden='des')}" 
+		            th:selected="${orden == 'des'}">
+		        Descendente
+		    </option>
+		</select>-->
+		
+		<form th:action="@{/products/order}" method="get">
+		    <select name="orden" class="btn btn-secondary" onchange="this.form.submit()">
+		        <option value="normal" th:selected="${orden == null || orden == 'normal'}">Predefinido</option>
+		        <option value="asc" th:selected="${orden == 'asc'}">Ascendente</option>
+		        <option value="des" th:selected="${orden == 'des'}">Descendente</option>
+		    </select>
+		</form>
 
         <!-- Solo administradores -->
         <a th:href="@{/products/add}"

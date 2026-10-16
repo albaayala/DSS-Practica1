@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alba.dss.practica1.model.Product;
 import com.alba.dss.practica1.service.ProductService;
@@ -92,4 +93,26 @@ public class ProductController {
 		return "redirect:/products";
 		
 	}
+	
+	//plus
+	@RequestMapping(value = "/products/order",  method= RequestMethod.GET)
+	public String getProductsOrder( @RequestParam(name = "orden", defaultValue = "normal") String orden,
+	        Model model){
+		
+		 if ("asc".equals(orden)) {
+		        model.addAttribute("products",
+		                productService.getAllProductsOrder(true));
+		    } else if ("des".equals(orden)) {
+		        model.addAttribute("products",
+		                productService.getAllProductsOrder(false));
+		    } else {
+		        model.addAttribute("products",
+		                productService.getAllProducts());
+		    }
+		 
+		 model.addAttribute("orden", orden);
+
+		 return "products";
+	}
+	
 }
