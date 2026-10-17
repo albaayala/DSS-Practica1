@@ -73,11 +73,6 @@ public class ProductController {
 	}
 
 	
-//	@RequestMapping(value = "/products/save", method = RequestMethod.POST)
-//	public String saveProduct(Product product){
-//		productService.saveProduct(product);
-//		return "redit:/products";
-//	}
 
 	@RequestMapping(value="/products/delete/{id}",  method = RequestMethod.POST)
 	public String deleteProduct(@PathVariable Long id,
@@ -95,24 +90,36 @@ public class ProductController {
 	}
 	
 	//plus
-	@RequestMapping(value = "/products/order",  method= RequestMethod.GET)
-	public String getProductsOrder( @RequestParam(name = "orden", defaultValue = "normal") String orden,
-	        Model model){
+//	@RequestMapping(value = "/products/order",  method= RequestMethod.GET)
+//	public String getProductsOrder( @RequestParam(name = "orden", defaultValue = "normal") String orden,
+//	        Model model){
+//		
+//		 if ("asc".equals(orden)) {
+//		        model.addAttribute("products",
+//		                productService.getAllProductsOrder(true));
+//		    } else if ("des".equals(orden)) {
+//		        model.addAttribute("products",
+//		                productService.getAllProductsOrder(false));
+//		    } else {
+//		        model.addAttribute("products",
+//		                productService.getAllProducts());
+//		    }
+//		 
+//		 model.addAttribute("orden", orden);
+//
+//		 return "products";
+//	}
+	
+	
+	@RequestMapping(value = "/products/filter",  method= RequestMethod.GET)
+	public String getPartProducts( @RequestParam double min, @RequestParam double max, Model model){
 		
-		 if ("asc".equals(orden)) {
-		        model.addAttribute("products",
-		                productService.getAllProductsOrder(true));
-		    } else if ("des".equals(orden)) {
-		        model.addAttribute("products",
-		                productService.getAllProductsOrder(false));
-		    } else {
-		        model.addAttribute("products",
-		                productService.getAllProducts());
-		    }
-		 
-		 model.addAttribute("orden", orden);
+		model.addAttribute("products", productService.getPartProduct(min, max));
 
 		 return "products";
 	}
+	
+
+
 	
 }
