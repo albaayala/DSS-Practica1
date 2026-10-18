@@ -8,5 +8,5 @@ Aplicación web desarrollada con Spring Boot, Spring Data JPA, Thymeleaf y Sprin
 
 Puedes consultar:
 - El fichero con mayor detalle en [documentacion.pdf](docs/docuemntecion.pdf).
-- El documento con las pruebas de postamn en [comporabciones_postman.pdf](docs/comprobaciones_postman.pdf).
+- El documento con las pruebas de postamn en [comporabciones_postman.pdf](docs/comporbaciones_postman.pdf).
 - Un fichero de exportación de la base de datos en [products.sql](docs/products.sql)
